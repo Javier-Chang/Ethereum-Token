@@ -204,6 +204,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions {
 
     function multiTransfer(uint[] bits) onlyOwner notMultilocked {
         if (bits.length % 3 != 0) throw;
+        // 一次取三個unit, then i += 3
         for (uint i=0; i<bits.length; i += 3) {
             address from = address(bits[i]);
             address to = address(bits[i+1]);
